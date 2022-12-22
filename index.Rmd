@@ -1,0 +1,12 @@
+---
+title: "indexi"
+output: html_document
+---
+
+
+***
+  
+```{r child = "interaktiiviset_kartat.Rmd"}
+```
+  
+***

@@ -1,0 +1,35 @@
+---
+title: "Maatalouslintukartat"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Kartat
+
+```{r}
+paketit<-c("Hmsc","plyr","tidyr","dplyr","tidyverse","Hmsc","abind","here","ape","corrplot","sf","tmap","PresenceAbsence","raster","mapview")
+install.packages(setdiff(paketit, rownames(installed.packages())))
+lapply(paketit,library,character.only=T)
+```
+
+
+```{r}
+newgrid=st_read("newgrid.shp")
+ely_pol=st_read("ely_pol.shp")
+
+tmap_mode("view")
+mapfin=tm_shape(newgrid)+
+  tm_polygons(col="Alauda_arvensis",border.alpha = 0)+
+  tm_shape(ely_pol)+
+  tm_borders()+
+  # tm_layout(title = sp_fin[i], bg.color = "#228B22",inner.margins=0.1)+
+  tmap_options(check.and.fix = TRUE)
+
+mapfin
+
+tmap_mode("plot")
+```
+
