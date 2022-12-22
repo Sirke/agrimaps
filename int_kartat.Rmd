@@ -1,0 +1,61 @@
+---
+title: "agrikartat"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Kartat
+
+```{r }
+paketit<-c("Hmsc","plyr","tidyr","dplyr","tidyverse","Hmsc","abind","here","ape","corrplot","sf","tmap","PresenceAbsence","raster","mapview")
+install.packages(setdiff(paketit, rownames(installed.packages())))
+lapply(paketit,library,character.only=T)
+```
+
+
+```{r kartat}
+newgrid=st_read("newgrid.shp")
+ely_pol=st_read("ely_pol.shp")
+
+sp=colnames(newgrid)
+sp=sp[-c(1:2,17)]
+
+sp_fin=c("Kiuru","Niittykirvinen","Naakka","Ruisrääkkä","Räystäspääsky","Peltosirkku","Haarapääsky","Isokuovi","Pikkuvarpunen","Pensastasku","Kottarainen","Pensaskerttu","Räkättirastas","Töyhtöhyyppä")
+
+tmap_mode("view")
+
+i=1
+#for (i in 1:length(sp)){
+
+  plot1=tm_shape(newgrid)+
+  tm_polygons(col=sp[i],border.alpha = 0)+
+  tm_shape(ely_pol)+
+  tm_borders()+
+  #tm_layout(title = sp_fin[i])+
+  tmap_options(check.and.fix = TRUE)
+  
+plot1
+#}
+
+i=2
+#for (i in 1:length(sp)){
+
+  plot1=tm_shape(newgrid)+
+  tm_polygons(col=sp[i],border.alpha = 0)+
+  tm_shape(ely_pol)+
+  tm_borders()+
+  #tm_layout(title = sp_fin[i])+
+  tmap_options(check.and.fix = TRUE)
+  
+plot1
+
+#tmap_mode("plot")
+```
+
+
+Kartat per laji
+

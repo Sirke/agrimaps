@@ -6,7 +6,7 @@ output: html_document
 
 ***
   
-```{r child = "interaktiiviset_kartat.Rmd"}
+```{r child = "int_kartat.Rmd"}
 ```
   
 ***

@@ -20,12 +20,12 @@ lapply(paketit,library,character.only=T)
 newgrid=st_read("newgrid.shp")
 ely_pol=st_read("ely_pol.shp")
 
-tmap_mode("view")
-
 sp=colnames(newgrid)
 sp=sp[-c(1:2,17)]
 
 sp_fin=c("Kiuru","Niittykirvinen","Naakka","Ruisrääkkä","Räystäspääsky","Peltosirkku","Haarapääsky","Isokuovi","Pikkuvarpunen","Pensastasku","Kottarainen","Pensaskerttu","Räkättirastas","Töyhtöhyyppä")
+
+tmap_mode("view")
 
 for (i in 1:length(sp)){
 plot1=tm_shape(newgrid)+
